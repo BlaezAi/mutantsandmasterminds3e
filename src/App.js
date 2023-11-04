@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import CharacterCreation from './CharacterCreation';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [show, setShow] = useState(false);
+
+    const handleCreateCharacter = () => {
+        setShow(true);
+    };
+
+    const handleClose = () => {
+        setShow(false);
+    };
+
+    return (
+        <div>
+            <button onClick={handleCreateCharacter}>Create Character</button>
+            {show && (
+                <CharacterCreation onClose={handleClose} />
+            )}
+            {/* Rest of your application */}
+        </div>
+    );
 }
 
 export default App;
